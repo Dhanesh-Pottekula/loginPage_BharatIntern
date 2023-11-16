@@ -10,22 +10,25 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="head">Login page</h1>
-    <form action="/login" method="post">
-                <label class="label">Email</label>
-                <input type="text" required name="email">
-            
-                <label class="label">password</label>
-                <input type="text" required name="password">
+        <div class="container2">
+            <h1 class="head">Login page</h1>
+
+        <form action="/login" method="post">
+                
+                <input type="text" required name="email" placeholder="Email">
+                <input type="password" required name="password" placeholder="password">
+                <% if (locals.error) { %>
+                    <p><%= locals.error %></p>
+                   <% } %>
             <div class="container1">
-                <button  class="button" type="submit">submit</button>
+                <button  class="button" type="submit">Submit</button>
             </div>
+            <div class="w-3 h-12">
+                <a href="http://localhost:3000/signup">Signup</a>
+            </div>
+        </form>
+        </div>
         
-    </form>
-    <h2>Signup : localhost:3000/signup</h2>
-    <% if (locals.error) { %>
-     <h1><%= locals.error %></h1>
-    <% } %>
     </div>
 </body>
 </html>

@@ -11,7 +11,7 @@ async function login_controller(req,res){
         const {email,password}=  req.body;
         const user= await user_model.findOne({email,password});
         if (!user){
-            res.render("login",{error:"invalid email or password",
+            res.render("login",{error:"Invalid email or password",
             })
         }
         else{
@@ -24,16 +24,19 @@ else if (!req.body){
 }
 
 async function signup_controller(req,res){
-    const {name="",email="",password=""}= req.body || {};
+    const {name="",email="",password="",retype_password=""}= req.body || {};
    try{
-    await user_model.create({
-        name,
-        email,
-        password
-    })
-    res.render("login")
+    if (password===retype_password){
+        await user_model.create({
+            name,
+            email,
+            password
+        })
+        res.render("login")
+    }else{ res.render("signup",{password_mismatch:"Password did not match"})}
+    
    }catch(error){res.render("signup",{
-    message:"duplicate email is detected"
+    email:"Duplicate Email is detected"
    });}
     
 }
