@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"  href="./CSS/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="head">Signup page</h1>
+    <form action="/signup" method="post">
+        <label class="label">name</label>
+        <input type="text" required name="name">
+
+        <label class="label">email</label>
+        <input type="text" required name="email">
+        
+        <label class="label">password</label>
+        <input type="text" required name="password">
+        
+        <div class="container1">
+            <button  class="button" type="submit">Signup</button>
+        </div>
+    </form>
+    <% if (locals.message) { %>
+        <h1> <%= locals.message %></h1>
+    <% } %>
+    </div>
+</body>
+</html>
